@@ -1,38 +1,22 @@
 ---
-title: "Overview"
+title: "StoRM Architecture Overview"
 linkTitle: "Overview"
 weight: 1
 description: >
-  Here's where your user finds out if your project is for them.
+  StoRM is a storage resource manager for disk based storage systems
 ---
 
-{{% pageinfo %}}
-This is a placeholder page that shows you how to use this template site.
-{{% /pageinfo %}}
+StoRM is a lightweight storage resource manager (SRM) solution developed at [INFN](https://home.infn.it/it/), which powers the Italian Tier-1 data center at [INFN-CNAF](https://www.cnaf.infn.it/), as well as more than 30 other sites.
 
+## StoRM typical deployment
 
-The Overview is where your users find out about your project. Depending on the size of your docset, you can have a separate overview page (like this one) or put your overview contents in the Documentation landing page (like in the Docsy User Guide). 
+StoRM implements the [SRM version 2.2](https://sdm.lbl.gov/srm-wg/doc/SRM.v2.2.html) data management specification and is typically deployed on top of a cluster file system like [IBM GPFS](https://www.ibm.com/docs/en/gpfs). StoRM has a layered architecture (Figure 1), split between two main components: the StoRM frontend and backend services. The StoRM frontend service implements the SRM interface exposed to client applications and frameworks. The StoRM backend service implements the actual storage management logic by interacting directly with the underlying file system. Data transfer is provided by GridFTP, HTTP/WebDAV and XRootD services accessing directly the file system underlying the StoRM deployment. StoRM WebDAV, besides HTTP data transfer functionality, also provides a WebDAV-based data management interface.
 
-Try answering these questions for your user in this page:
+StoRM supports tape through integration with GEMSS, a tape library manager component also developed at INFN-CNAF.
 
-## What is it?
+![StoRM typical deployment architecture](/images/storm-architecture.png "Figure 1. StoRM typical deployment architecture")
 
-Introduce your project, including what it does or lets you do, why you would use it, and its primary goal (and how it achieves it). This should be similar to your README description, though you can go into a little more detail here if you want.
-
-## Why do I want it?
-
-Help your user know if your project will help them. Useful information can include: 
-
-* **What is it good for?**: What types of problems does your project solve? What are the benefits of using it?
-
-* **What is it not good for?**: For example, point out situations that might intuitively seem suited for your project, but aren't for some reason. Also mention known limitations, scaling issues, or anything else that might let your users know if the project is not for them.
-
-* **What is it *not yet* good for?**: Highlight any useful features that are coming soon.
-
-## Where should I go next?
-
-Give your users next steps from the Overview. For example:
-
-* [Getting Started](/docs/getting-started/): Get started with $project
-* [Examples](/docs/examples/): Check out some example code!
+StoRM provides flexible AuthN/Z support:
+* VOMS & OAuth tokens (WebDAV & CDMI)
+* File access control is enforced via POSIX ACLs
 

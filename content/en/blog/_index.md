@@ -1,9 +1,9 @@
 ---
-title: "Docsy Blog"
+title: "StoRM Blog"
 linkTitle: "Blog"
 menu:
   main:
-    weight: 30
+    weight: 10
 ---
 
 

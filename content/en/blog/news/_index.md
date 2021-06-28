@@ -1,6 +1,6 @@
 
 ---
-title: "News About Docsy"
+title: "News About StoRM"
 linkTitle: "News"
 weight: 20
 ---

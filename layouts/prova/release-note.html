@@ -1,0 +1,12 @@
+{{ define "main"}}
+  {{ $urlPre := "https://api.github.com" }}
+  {{ $releases := getJSON $urlPre "/repos/italiangrid/" .Params.component "/releases" }}
+  <main id="main">
+    <div>
+      {{ range where $releases "tag_name" "eq" .Params.version }}
+      <h1 id="title">{{ .name }}</h1>
+      {{ .body | markdownify }}
+      {{ end }}
+    </div>
+  </main>
+{{ end }}

@@ -1,6 +1,6 @@
 
 ---
-title: "New Releases"
+title: "New StoRM Releases"
 linkTitle: "Releases"
 weight: 20
 ---
