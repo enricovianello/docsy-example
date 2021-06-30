@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>StoRM – StoRM</title><link>/</link><description>Recent content on StoRM</description><generator>Hugo -- gohugo.io</generator><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Released StoRM v1.11.21</title><link>/blog/2021/05/12/released-storm-v1.11.21/</link><pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate><guid>/blog/2021/05/12/released-storm-v1.11.21/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>StoRM – StoRM</title><link>https://enricovianello.github.io/docsy-example/</link><description>Recent content on StoRM</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://enricovianello.github.io/docsy-example/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Released StoRM v1.11.21</title><link>https://enricovianello.github.io/docsy-example/blog/2021/05/12/released-storm-v1.11.21/</link><pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate><guid>https://enricovianello.github.io/docsy-example/blog/2021/05/12/released-storm-v1.11.21/</guid><description>
 &lt;p>The StoRM Product Team is pleased to announce the release of
 &lt;a href="%7B%7Bsite.baseurl%7D%7D/release-notes/StoRM-v1.11.21.html">StoRM 1.11.21&lt;/a> that includes the following updated components:&lt;/p>
 &lt;ul>
@@ -18,7 +18,7 @@
 &lt;li>provides a set of scripts that can be used to edit from command line the storage space info related to a storage area.&lt;/li>
 &lt;/ul>
 &lt;p>Please, follow the &lt;a href="%7B%7Bsite.baseurl%7D%7D/documentation/sysadmin-guide/1.11.21/upgrading/">upgrade instructions&lt;/a>.
-Read the &lt;a href="%7B%7Bsite.baseurl%7D%7D/release-notes/StoRM-v1.11.21.html">release notes&lt;/a> for more details.&lt;/p></description></item><item><title>Blog: StoRM v1.11.20 could break connections with MariaDB</title><link>/blog/2021/04/30/storm-v1.11.20-could-break-connections-with-mariadb/</link><pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate><guid>/blog/2021/04/30/storm-v1.11.20-could-break-connections-with-mariadb/</guid><description>
+Read the &lt;a href="%7B%7Bsite.baseurl%7D%7D/release-notes/StoRM-v1.11.21.html">release notes&lt;/a> for more details.&lt;/p></description></item><item><title>Blog: StoRM v1.11.20 could break connections with MariaDB</title><link>https://enricovianello.github.io/docsy-example/blog/2021/04/30/storm-v1.11.20-could-break-connections-with-mariadb/</link><pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate><guid>https://enricovianello.github.io/docsy-example/blog/2021/04/30/storm-v1.11.20-could-break-connections-with-mariadb/</guid><description>
 &lt;p>After the update from StoRM v1.11.19 to StoRM v1.11.20, if JVM and database are not on the same timezone, the Backend&amp;rsquo;s communication with MariaDB could start failing with the following error:&lt;/p>
 &lt;pre>&lt;code>Caused by: java.sql.SQLException: The server time zone value 'CEST' is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specifc time zone value if you want to utilize time zone support.
 &lt;/code>&lt;/pre>&lt;p>This bug is tracked at &lt;a href="https://issues.infn.it/jira/browse/STOR-1397">STOR-1397&lt;/a>.&lt;/p>
@@ -77,14 +77,14 @@ Empty set (0.00 sec)
 &lt;h3 id="install-storm-backend-v11121-beta">Install StoRM Backend v1.11.21 beta&lt;/h3>
 &lt;p>StoRM beta repository already contains a beta version of next StoRM v1.11.21 with this error fixed.
 Of course beta repository is not a stable repo, so apply this in case of a testbed. We do not recommend use this rpms in a production behaviour.&lt;/p>
-&lt;p>Browse CentOS 7 Beta repository &lt;a href="https://repo.cloud.cnaf.infn.it/service/rest/repository/browse/storm-rpm-beta/centos7/">here&lt;/a>.&lt;/p></description></item><item><title>Blog: Easy documentation with Docsy</title><link>/blog/2018/10/06/easy-documentation-with-docsy/</link><pubDate>Sat, 06 Oct 2018 00:00:00 +0000</pubDate><guid>/blog/2018/10/06/easy-documentation-with-docsy/</guid><description>
-&lt;img src="/blog/2018/10/06/easy-documentation-with-docsy/featured-sunset-get_hu69849a7cdb847c2393a7b3a7f6061c86_387442_640x0_resize_catmullrom_2.png" width="640" height="253"/>
+&lt;p>Browse CentOS 7 Beta repository &lt;a href="https://repo.cloud.cnaf.infn.it/service/rest/repository/browse/storm-rpm-beta/centos7/">here&lt;/a>.&lt;/p></description></item><item><title>Blog: Easy documentation with Docsy</title><link>https://enricovianello.github.io/docsy-example/blog/2018/10/06/easy-documentation-with-docsy/</link><pubDate>Sat, 06 Oct 2018 00:00:00 +0000</pubDate><guid>https://enricovianello.github.io/docsy-example/blog/2018/10/06/easy-documentation-with-docsy/</guid><description>
+&lt;img src="https://enricovianello.github.io/docsy-example/blog/2018/10/06/easy-documentation-with-docsy/featured-sunset-get_hu69849a7cdb847c2393a7b3a7f6061c86_387442_640x0_resize_catmullrom_2.png" width="640" height="253"/>
 &lt;p>&lt;strong>This is a typical blog post that includes images.&lt;/strong>&lt;/p>
 &lt;p>The front matter specifies the date of the blog post, its title, a short description that will be displayed on the blog landing page, and its author.&lt;/p>
 &lt;h2 id="including-images">Including images&lt;/h2>
 &lt;p>Here&amp;rsquo;s an image (&lt;code>featured-sunset-get.png&lt;/code>) that includes a byline and a caption.&lt;/p>
 &lt;div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 610px">
-&lt;img class="card-img-top" src="/blog/2018/10/06/easy-documentation-with-docsy/featured-sunset-get_hu69849a7cdb847c2393a7b3a7f6061c86_387442_600x300_fill_catmullrom_smart1_2.png" width="600" height="300">
+&lt;img class="card-img-top" src="https://enricovianello.github.io/docsy-example/docsy-example/blog/2018/10/06/easy-documentation-with-docsy/featured-sunset-get_hu69849a7cdb847c2393a7b3a7f6061c86_387442_600x300_fill_catmullrom_smart1_2.png" width="600" height="300">
 &lt;div class="card-body px-0 pt-2 pb-0">
 &lt;p class="card-text">
 Fetch and scale an image in the upcoming Hugo 0.43.
@@ -100,14 +100,14 @@ byline: &amp;quot;Photo: Riona MacNamara / CC-BY-CA&amp;quot;
 &lt;/code>&lt;/pre>&lt;p>To include the image in a page, specify its details like this:&lt;/p>
 &lt;pre>&lt;code>
 &lt;div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 610px">
-&lt;img class="card-img-top" src="/blog/2018/10/06/easy-documentation-with-docsy/featured-sunset-get_hu69849a7cdb847c2393a7b3a7f6061c86_387442_600x300_fill_catmullrom_smart1_2.png" width="600" height="300">
+&lt;img class="card-img-top" src="https://enricovianello.github.io/docsy-example/docsy-example/blog/2018/10/06/easy-documentation-with-docsy/featured-sunset-get_hu69849a7cdb847c2393a7b3a7f6061c86_387442_600x300_fill_catmullrom_smart1_2.png" width="600" height="300">
 &lt;div class="card-body px-0 pt-2 pb-0">
 &lt;p class="card-text">
 Fetch and scale an image in the upcoming Hugo 0.43.
 &lt;small class="text-muted">&lt;br/>Photo: Riona MacNamara / CC-BY-CA&lt;/small>&lt;/p>
 &lt;/div>
 &lt;/div>
-&lt;/code>&lt;/pre>&lt;p>The image will be rendered at the size and byline specified in the front matter.&lt;/p></description></item><item><title>Blog: The second blog post</title><link>/blog/2018/10/06/the-second-blog-post/</link><pubDate>Sat, 06 Oct 2018 00:00:00 +0000</pubDate><guid>/blog/2018/10/06/the-second-blog-post/</guid><description>
+&lt;/code>&lt;/pre>&lt;p>The image will be rendered at the size and byline specified in the front matter.&lt;/p></description></item><item><title>Blog: The second blog post</title><link>https://enricovianello.github.io/docsy-example/blog/2018/10/06/the-second-blog-post/</link><pubDate>Sat, 06 Oct 2018 00:00:00 +0000</pubDate><guid>https://enricovianello.github.io/docsy-example/blog/2018/10/06/the-second-blog-post/</guid><description>
 &lt;p>Text can be &lt;strong>bold&lt;/strong>, &lt;em>italic&lt;/em>, or &lt;del>strikethrough&lt;/del>. &lt;a href="https://github.com">Links&lt;/a> should be blue with no underlines (unless hovered over).&lt;/p>
 &lt;p>There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.&lt;/p>
 &lt;p>There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.&lt;/p>
@@ -371,7 +371,7 @@ This is a warning with a title!
 &lt;h3 id="used-ram">Used RAM&lt;/h3>
 &lt;p>Bacon ipsum dolor sit amet t-bone doner shank drumstick, pork belly porchetta chuck sausage brisket ham hock rump pig. Chuck kielbasa leberkas, pork bresaola ham hock filet mignon cow shoulder short ribs biltong.&lt;/p>
 &lt;pre>&lt;code>This is the final element on the page and there should be no margin below this.
-&lt;/code>&lt;/pre></description></item><item><title>Blog: Another Great Release</title><link>/blog/2018/01/04/another-great-release/</link><pubDate>Thu, 04 Jan 2018 00:00:00 +0000</pubDate><guid>/blog/2018/01/04/another-great-release/</guid><description>
+&lt;/code>&lt;/pre></description></item><item><title>Blog: Another Great Release</title><link>https://enricovianello.github.io/docsy-example/blog/2018/01/04/another-great-release/</link><pubDate>Thu, 04 Jan 2018 00:00:00 +0000</pubDate><guid>https://enricovianello.github.io/docsy-example/blog/2018/01/04/another-great-release/</guid><description>
 &lt;p>Text can be &lt;strong>bold&lt;/strong>, &lt;em>italic&lt;/em>, or &lt;del>strikethrough&lt;/del>. &lt;a href="https://github.com">Links&lt;/a> should be blue with no underlines (unless hovered over).&lt;/p>
 &lt;p>There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.&lt;/p>
 &lt;p>There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.&lt;/p>
