@@ -1,4 +1,4 @@
-baseURL = "https://enricovianello.github.io/docsy-example/"
+baseURL = "https://enricovianello.github.io/storm-docs/"
 title = "StoRM"
 
 enableRobotsTXT = true
