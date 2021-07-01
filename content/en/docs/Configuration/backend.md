@@ -1,11 +1,12 @@
 ---
-title: "WebDAV User Guide"
-linkTitle: "WebDAV"
+title: "StoRM Backend"
+linkTitle: "Backend"
+weight: 1
 noComment: true
-weight: 2
 description: >
 ---
 
 {{% pageinfo %}}
 This is a placeholder page. Replace it with your own content.
 {{% /pageinfo %}}
+

@@ -1,0 +1,18 @@
+{{ define "main"}}
+  <main id="main">
+    <div class="container text-left">
+      <h1 id="title">{{ .Title }} {{ .Params.repo }}</h1>
+      <br/>
+      {{ $urlReleases := print "https://api.github.com/repos/italiangrid/" .Params.repo "/releases" }}
+      {{ $releases := getJSON $urlReleases (dict "Authorization" "token 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") }}
+      {{ range $index, $release := $releases }}
+      <hr/>
+      <h2>{{ $release.name }}</h2>
+      <p>Released on <i>{{ dateFormat "Monday, January 2, 2006" $release.published_at }}</i></p>
+      {{ $release.body | markdownify }}
+      <h4>Links</h4>
+      <p>Source: <a href="{{ $release.html_url }}">{{ $release.tag_name }}</a></p>
+      {{ end }}
+    </div>
+  </main>
+{{ end }}

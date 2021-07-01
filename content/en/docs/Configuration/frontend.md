@@ -1,8 +1,9 @@
 ---
-title: "WebDAV User Guide"
-linkTitle: "WebDAV"
-noComment: true
+title: "StoRM Frontend"
+linkTitle: "Frontend"
+date: 2021-06-25
 weight: 2
+noComment: true
 description: >
 ---
 

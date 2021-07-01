@@ -1,0 +1,40 @@
+backend:
+  name: StoRM Backend
+  repo: storm
+  ui-index: 1
+frontend:
+  name: StoRM Frontend
+  repo: storm-frontend
+  ui-index: 2
+webdav:
+  name: StoRM WebDAV
+  repo: storm-webdav
+  ui-index: 3
+gridftp:
+  name: StoRM Globus GridFTP DSI plugin
+  repo: storm-gridftp-dsi
+  ui-index: 4
+native-libs:
+  name: StoRM Native Libs
+  repo: storm-native-libs
+  ui-index: 5
+info-provider:
+  name: StoRM Info Provider
+  repo: storm-info-provider
+  ui-index: 6
+srm-client:
+  name: StoRM SRM Client
+  repo: storm-client
+  ui-index: 7
+xmlrpc-c:
+  name: StoRM XMLRPC-C
+  repo: storm-xmlrpc
+  ui-index: 8
+cdmi:
+  name: CDMI StoRM
+  repo: cdmi-storm
+  ui-index: 9
+utils:
+  name: StoRM Utils
+  repo: storm-utils
+  ui-index: 10

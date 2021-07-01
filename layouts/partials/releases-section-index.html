@@ -1,0 +1,63 @@
+<div class="section-index">
+
+    <!--<h4>StoRM Components</h4>-->
+    {{ $urlPre := "https://api.github.com" }}
+
+    <button class="btn btn-sm btn-link" data-toggle="collapse" data-target=".collapse" style="margin-bottom: 10px;">Show older releases</button>
+    
+    <table class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <th>Component</th>
+        <th>Version</th>
+      </thead>
+      <tbody>
+      {{ range sort .Site.Data.components "ui-index" }}
+        {{ $releases := getJSON $urlPre "/repos/italiangrid/" .repo "/releases" (dict "Authorization" "token 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") }}
+        <tr>
+          <td><a href="https://github.com/italiangrid/{{ .repo }}">{{ .name }}</a></td>
+          <td>
+            <ul class="list-unstyled" style="margin: 0 0;">
+            {{ range $index, $release := $releases }}
+              {{ if eq $index 0 }}
+              <li><a href="{{ $release.html_url }}">{{ $release.tag_name }}</a></li>
+              {{ else }}
+              <li class="collapse"><a href="{{ $release.html_url }}">{{ $release.tag_name }}</a></li>
+              {{ end }}
+            {{ end }}
+            </ul>
+          </td>
+        </tr>
+        {{ end }}
+      </tbody>
+    </table>
+
+
+    {{ $pages := (where .Site.Pages "Section" .Section).ByWeight }}
+    {{ $pages = (where $pages "Type" "!=" "search") }}
+    {{ $parent := .Page }}
+    {{ if $parent.Params.no_list }}
+    {{/* If no_list is true we don't show a list of subpages */}}
+    {{ else if $parent.Params.simple_list }}
+    {{/* If simple_list is true we show a bulleted list of subpages */}}
+        <ul>
+            {{ range $pages }}
+                {{ if eq .Parent $parent }}
+                    <li><a href="{{ .RelPermalink }}">{{- .Title -}}</a></li>
+                {{ end }}
+            {{ end }}
+        </ul>
+    {{ else }}
+    {{/* Otherwise we show a nice formatted list of subpages with page descriptions */}}
+    <hr class="panel-line">
+        {{ range $pages }}
+            {{ if eq .Parent $parent }}
+                <div class="entry">
+                    <h5>
+                        <a href="{{ .RelPermalink }}">{{- .Title -}}</a>
+                    </h5>
+                    <p>{{ .Description | markdownify }}</p>
+                </div>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+</div>

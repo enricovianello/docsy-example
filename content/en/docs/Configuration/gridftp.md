@@ -1,8 +1,9 @@
 ---
-title: "WebDAV User Guide"
-linkTitle: "WebDAV"
+title: "StoRM GridFTP DSI plugin"
+linkTitle: "GridFTP"
+date: 2021-06-25
+weight: 3
 noComment: true
-weight: 2
 description: >
 ---
 

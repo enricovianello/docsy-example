@@ -1,8 +1,9 @@
 ---
-title: "WebDAV User Guide"
+title: "StoRM WebDAV"
 linkTitle: "WebDAV"
+date: 2021-06-25
+weight: 4
 noComment: true
-weight: 2
 description: >
 ---
 

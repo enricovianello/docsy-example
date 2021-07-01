@@ -3,6 +3,7 @@ title: "StoRM Storage Information"
 linkTitle: "Storage Info"
 date: 2021-06-25
 weight: 2
+noComment: true
 description: >
   Information about storage managed by StoRM is stored in a configuration file named namespace.xml. 
 ---

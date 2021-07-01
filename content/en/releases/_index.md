@@ -1,19 +1,8 @@
 ---
-title: "StoRM Releases"
+title: "StoRM Components"
 linkTitle: "Releases"
-weight: 100
-type: prova
-layout: mylayout
+type: releases
 menu:
   main:
-    weight: 100
+    weight: 20
 ---
-
-
-{{% pageinfo %}}
-This is a placeholder page that shows you how to use this template site.
-{{% /pageinfo %}}
-
-bla bla
-
-Dalksdjalskdjalks+asdasòldkasdòakl

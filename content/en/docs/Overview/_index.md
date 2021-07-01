@@ -2,6 +2,7 @@
 title: "StoRM Architecture Overview"
 linkTitle: "Overview"
 weight: 1
+noComment: true
 description: >
   StoRM is a storage resource manager for disk based storage systems
 ---
@@ -14,7 +15,7 @@ StoRM implements the [SRM version 2.2](https://sdm.lbl.gov/srm-wg/doc/SRM.v2.2.h
 
 StoRM supports tape through integration with GEMSS, a tape library manager component also developed at INFN-CNAF.
 
-![StoRM typical deployment architecture](/images/storm-architecture.png "Figure 1. StoRM typical deployment architecture")
+![StoRM typical deployment architecture](/storm-docs/images/storm-architecture.png "Figure 1. StoRM typical deployment architecture")
 
 StoRM provides flexible AuthN/Z support:
 * VOMS & OAuth tokens (WebDAV & CDMI)

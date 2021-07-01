@@ -1,7 +1,7 @@
 ---
 title: "StoRM GridFTP DSI plugin"
 linkTitle: "GridFTP"
-date: 2021-06-25
+noComment: true
 description: >
   The GridFTP DSI plugin is ...
 ---

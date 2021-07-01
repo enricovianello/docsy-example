@@ -1,7 +1,7 @@
 ---
 title: "ClientSRM User Guide"
 linkTitle: "ClientSRM"
-date: 2021-06-25
+noComment: true
 weight: 1
 description: >
 ---

@@ -1,0 +1,47 @@
+{{ define "main"}}
+  {{ $gravatarUrlBase := "http://www.gravatar.com/avatar/" }}
+  {{ $githubUrlBase := "https://github.com/" }}
+  <main id="main">
+    <div class="container text-left">
+      <h1 id="about-us">About us</h1>
+      <p>Here are the main StoRM developers:</p>
+      
+      {{ range $author := .Site.Data.authors }}
+        {{ $gravatarUrl := print $gravatarUrlBase $author.gravatar "?s=64" }}
+        {{ $githubUrl := print $githubUrlBase $author.github }}
+      <div style="margin-bottom: 8px; margin-top: 15px;">
+        <div style="float: left; margin-left: 4px;">
+          <img class="media-object pull-left img-rounded" src="{{ $gravatarUrl }}">
+        </div>
+        <div style="float: left; margin-left: 20px;">
+          <b>{{ $author.display_name }}</b><br/>
+          <a href="mailto:{{ $author.email }}">{{ $author.email }}</a><br/>
+          GitHub: <a href="{{ $githubUrl }}">{{ $author.github }}</a>
+        </div>
+        <div style="clear: both;"></div>
+      </div>
+      {{ end }}
+
+      <br/>
+      <h4 id="about-eu-projects">About EU projects</h4>
+
+      <table class="table table-bordered">
+        <tr>
+          <td>
+            <img src="/storm-docs/images/eu-logo.jpeg" width="30px" />
+          </td>
+          <td>
+            <img src="/storm-docs/images/eosc-hub-web.png" width="85px" />
+          </td>
+          <td>
+            StoRM is co-funded by <a href="http://eosc-hub.eu/">EOSC-hub project</a> (Horizon 2020) under Grant number 777536.
+          </td>
+        </tr>
+      </table>
+
+    </div>
+  </main>
+{{ end }}
+
+
+

@@ -1,7 +1,7 @@
 ---
 title: "StoRM WebDAV"
 linkTitle: "WebDAV"
-date: 2021-06-25
+noComment: true
 description: >
   StoRM WebDAV is ...
 ---

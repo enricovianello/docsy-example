@@ -1,7 +1,7 @@
 ---
 title: "StoRM Frontend"
 linkTitle: "Frontend"
-date: 2021-06-25
+noComment: true
 description: >
   The Frontend component exposes the SRM web service interface, manages user authentication and stores the data of the SRM requests into the database. It relies on the GSOAP framework to expose the SRM interface and it uses the CGSI-GSOAP plugin to manage secure connection with clients.
 ---
