@@ -3,7 +3,7 @@ title: "CDMI StoRM Releases"
 linkTitle: "CDMI StoRM"
 type: releases
 layout: component
-repo: cdmi-storm
+component: cdmi
 weight: 9
 noComment: true
 description: >

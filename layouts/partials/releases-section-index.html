@@ -2,17 +2,19 @@
 
     <!--<h4>StoRM Components</h4>-->
     {{ $urlPre := "https://api.github.com" }}
+    {{ $githubToken := getenv "API_GITHUB_TOKEN" }}
+    {{ $githubTokenStr := print "token " $githubToken }}
 
     <button class="btn btn-sm btn-link" data-toggle="collapse" data-target=".collapse" style="margin-bottom: 10px;">Show older releases</button>
     
-    <table class="table table-striped table-bordered table-sm">
+    <table class="table table-striped table-bordered table-sm" id="components">
       <thead class="thead-dark">
         <th>Component</th>
         <th>Version</th>
       </thead>
       <tbody>
       {{ range sort .Site.Data.components "ui-index" }}
-        {{ $releases := getJSON $urlPre "/repos/italiangrid/" .repo "/releases" (dict "Authorization" "token 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") }}
+        {{ $releases := getJSON $urlPre "/repos/italiangrid/" .repo "/releases" (dict "Authorization" $githubTokenStr) }}
         <tr>
           <td><a href="https://github.com/italiangrid/{{ .repo }}">{{ .name }}</a></td>
           <td>

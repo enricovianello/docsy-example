@@ -3,7 +3,7 @@ title: "StoRM Dynamic Info Provider Releases"
 linkTitle: "StoRM Dynamic Info Provider"
 type: releases
 layout: component
-repo: storm-info-provider
+component: info-provider
 weight: 6
 noComment: true
 description: >

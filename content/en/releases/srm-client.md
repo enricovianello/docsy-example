@@ -3,7 +3,7 @@ title: "StoRM SRM Client Releases"
 linkTitle: "StoRM SRM Client"
 type: releases
 layout: component
-repo: storm-client
+component: srm-client
 weight: 7
 noComment: true
 description: >

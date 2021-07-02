@@ -1,10 +1,13 @@
 {{ define "main"}}
+  {{ $component := index .Site.Data.components .Params.component }}
+  {{ $githubToken := getenv "API_GITHUB_TOKEN" }}
+  {{ $githubTokenStr := print "token " $githubToken }}
+  {{ $urlReleases := print "https://api.github.com/repos/italiangrid/" $component.repo "/releases" }}
+  {{ $releases := getJSON $urlReleases (dict "Authorization" $githubTokenStr) }}
   <main id="main">
     <div class="container text-left">
-      <h1 id="title">{{ .Title }} {{ .Params.repo }}</h1>
+      <h1 id="title">{{ .Title }}</h1>
       <br/>
-      {{ $urlReleases := print "https://api.github.com/repos/italiangrid/" .Params.repo "/releases" }}
-      {{ $releases := getJSON $urlReleases (dict "Authorization" "token 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") }}
       {{ range $index, $release := $releases }}
       <hr/>
       <h2>{{ $release.name }}</h2>

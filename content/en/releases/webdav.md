@@ -3,7 +3,7 @@ title: "StoRM WebDAV Releases"
 linkTitle: "StoRM WebDAV"
 type: releases
 layout: component
-repo: storm-webdav
+component: webdav
 weight: 3
 noComment: true
 description: >

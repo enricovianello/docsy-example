@@ -3,7 +3,7 @@ title: "StoRM Frontend Releases"
 linkTitle: "StoRM Frontend"
 type: releases
 layout: component
-repo: storm-frontend
+component: frontend
 weight: 2
 noComment: true
 description: >

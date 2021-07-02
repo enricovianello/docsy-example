@@ -3,7 +3,7 @@ title: "StoRM XMLRPC-C Releases"
 linkTitle: "StoRM XMLRPC-C"
 type: releases
 layout: component
-repo: storm-xmlrpc-c
+component: xmlrpc-c
 weight: 8
 noComment: true
 description: >

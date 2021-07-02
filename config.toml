@@ -1,7 +1,7 @@
 baseURL = "https://enricovianello.github.io/storm-docs/"
 title = "StoRM"
 
-ignoreErrors = ["error-remote-getjson"]
+#ignoreErrors = ["error-remote-getjson"]
 
 enableRobotsTXT = true
 

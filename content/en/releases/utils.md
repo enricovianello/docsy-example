@@ -3,7 +3,7 @@ title: "StoRM Utils Releases"
 linkTitle: "StoRM Utils"
 type: releases
 layout: component
-repo: storm-utils
+component: utils
 weight: 10
 noComment: true
 description: >

@@ -35,7 +35,9 @@ jobs:
             ${{ runner.os }}-node-
 
       - run: npm ci
-      - run: hugo --minify
+      - run: |
+          export API_GITHUB_TOKEN=${{ secrets.API_GITHUB_TOKEN }}
+          hugo --minify
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

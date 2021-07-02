@@ -3,7 +3,7 @@ title: "StoRM Native Libs Releases"
 linkTitle: "StoRM Native Libs"
 type: releases
 layout: component
-repo: storm-native-libs
+component: native-libs
 weight: 5
 noComment: true
 description: >
