@@ -1,10 +1,10 @@
 ---
-title: "Configure storm.properties"
-linkTitle: "storm.properties"
+title: "Configure StoRM Backend service"
+linkTitle: "Service configuration"
 weight: 1
 noComment: true
 description: >
-  Learn what are the properties that administrators can tune for StoRM Backend.
+  The storm.properties file contains the StoRM Backend service configuration. In this section you will find all the properties that administrators can tune.
 ---
 
 The file `/etc/storm/backend-server/storm.properties` contains StoRM Backend configuration.
