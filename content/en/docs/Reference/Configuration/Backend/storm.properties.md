@@ -10,29 +10,52 @@ description: >
 The file `/etc/storm/backend-server/storm.properties` contains StoRM Backend configuration.
 This file is read at service startup. Your changes will be applied after a service restart.
 
-> Since StoRM v1.12.0, a huge name refactoring has been done. All the names of the properties, for example, have been cleared of dot and minus.
-> The unique separator character allowed is the underscore. The section related to the database connection, in particular, has been also heavily refactored.
+> Since StoRM v1.12.0, a huge name refactoring has been done. This new version is called '2.0'. In case the latest version of storm.properties is not recognized during bootstrap phase, StoRM Backend tries to convert it to the latest version and complete the bootstrap. The converted properties set is also saved to another file. Check StoRM backend log for more details.
 
-| Property | Description | Default |
-|:-----|:------------|:--------|
-| **SRM Service**
-| `srm_endpoints` | List of the accepted StoRM SRM end-points. Each end-point must be composed by `host` and `port`. This is used by StoRM to understand if a SURL is valid (managed or not). The first endpoint of this list is considered the default public SRM endpoint. Example: <br/> `srm_endpoints.1.host = fe-storm.example.org` | It's initialized with the local FQDN as host and 8444. |
-| ~~`storm.service.FE-public.hostname`~~ | \[*DEPRECATED*\] StoRM Frontend hostname in case of a single Frontend StoRM deployment, StoRM Frontends DNS alias in case of a multiple Frontends StoRM deployment. | |
-| ~~`storm.service.port`~~ | \[*DEPRECATED*\] SRM service port. | 8444
-| ~~`storm.service.SURL.endpoint`~~ | \[*DEPRECATED*\] List of comma separated strings identifying the StoRM Frontend endpoint(s). This is used by StoRM to understand if a SURL is local. E.g. *srm://storm.cnaf.infn.it:8444/srm/managerv2*. <br/> If you want to accept SURL with the ip address instead of the FQDN hostname you have to add the proper endpoint (E.g. IPv4: *srm://192.168.100.12:8444/srm/managerv2* or IPv6: *srm://[2001:0db8::1428:57ab]:8444/srm/managerv2*. | "srm://\[storm.service.FE-public.hostname\]:8444/srm/managerv2" |
-| ~~`storm.service.SURL.default-ports`~~ | \[*DEPRECATED*\] List of comma separated valid SURL port numbers. | 8444
-| **Database connection**
-| `db.username` | The connection user name to be passed to the JDBC driver to establish a connection. | "storm" |
-| `db.password` | The connection password to be passed to the JDBC driver to establish a connection. | "storm" |
-| `db.hostname` | Fully Qualified Domain Name of database hostname. | It's initialized with the local FQDN |
-| `db.port` | Database connection URL port. | 3306 |
-| `db.properties` | The connection properties that will be sent to the JDBC driver when establishing new connections. Format of the string must be \[propertyName=property;\]\* NOTE - The "user" and "password" properties will be passed explicitly, so they do not need to be included here. | "serverTimezone=UTC&autoReconnect=true" |
-| **Database connection pool**
-| `db.pool.size` | The maximum number of active connections that can be allocated from database connection pool at the same time, or negative for no limit. | -1 |
-| `db.pool.min_idle` | The minimum number of connections that can remain idle in the pool, without extra ones being created, or zero to create none. | 10 |
-| `db.pool.max_wait_millis` | The maximum number of milliseconds that the pool will wait (when there are no available connections) for a connection to be returned before throwing an exception, or -1 to wait indefinitely.| 5000 |
-| `db.pool.test_on_borrow` | The indication of whether objects will be validated before being borrowed from the pool. If the object fails to validate, it will be dropped from the pool, and we will attempt to borrow another. | true |
-| `db.pool.test_while_idle` | The indication of whether objects will be validated by the idle object evictor (if any). If an object fails to validate, it will be dropped from the pool. | true |
+The full set of currently supported configuration properties are shown below by categories.
+
+### SRM service properties
+
+| Name | Description |
+|:-----|:------------|
+| `srm_endpoints`| List of the accepted StoRM SRM endpoints. Each endpoint is composed by `host` (mandatory) and `port` (optional). This list is used by StoRM to understand if a SURL should be managed or not. The first endpoint of this list is considered the default public SRM endpoint. Example: </br> `srm_endpoints[0].host: fe01-storm.example.org` </br> `srm_endpoints[0].port: 8444` </br> `srm_endpoints[1].host: fe02-storm.example.org` </br> `srm_endpoints[1].port: 8444` </br> It replaces the use of `storm.service.FE-public.hostname`, `storm.service.port`, `storm.service.SURL.endpoint` and `storm.service.SURL.default-ports`. It's initialized with one endpoint with the local FQDN as host and 8444 as port. |
+
+Deprecated properties:
+
+`storm.service.FE-public.hostname`, `storm.service.port`, `storm.service.SURL.endpoint` and `storm.service.SURL.default-ports`
+
+### Database connection properties
+
+| Property | Description |
+|:-----|:------------|
+| `db.username` | The connection user name to be passed to the JDBC driver to establish a connection. Default value: **storm** |
+| `db.password` | The connection password to be passed to the JDBC driver to establish a connection. Default value: **storm** |
+| `db.hostname` | Fully Qualified Domain Name of database hostname. It's initialized with the local FQDN |
+| `db.port` | Database connection URL port. Default value: **3306** |
+| `db.properties` | The connection properties that will be sent to the JDBC driver when establishing new connections. Format of the string must be \[propertyName=property;\]\* NOTE - The "user" and "password" properties will be passed explicitly, so they do not need to be included here. Default value: **"serverTimezone=UTC&autoReconnect=true"** |
+
+Deprecated properties:
+
+`storm.service.request-db.host`, `storm.service.request-db.username`, `storm.service.request-db.passwd` and `storm.service.request-db.properties` 
+
+### Database connection pool properties
+
+| Property | Description |
+|:-----|:------------|
+| `db.pool.size` | The maximum number of active connections that can be allocated from database connection pool at the same time, or negative for no limit. Default value: **-1** |
+| `db.pool.min_idle` | The minimum number of connections that can remain idle in the pool, without extra ones being created, or zero to create none. Default value: **10** |
+| `db.pool.max_wait_millis` | The maximum number of milliseconds that the pool will wait (when there are no available connections) for a connection to be returned before throwing an exception, or -1 to wait indefinitely. Default value: **5000** |
+| `db.pool.test_on_borrow` | The indication of whether objects will be validated before being borrowed from the pool. If the object fails to validate, it will be dropped from the pool, and we will attempt to borrow another. Default value: **true** |
+| `db.pool.test_while_idle` | The indication of whether objects will be validated by the idle object evictor (if any). If an object fails to validate, it will be dropped from the pool. Default value: **true** |
+
+Deprecated properties:
+
+`asynch.db.ReconnectPeriod`, `asynch.db.DelayPeriod`, `persistence.internal-db.connection-pool.maxActive`,  `persistence.internal-db.connection-pool.maxWait` 
+
+### REST 
+
+| Property | Description |
+|:-----|:------------|
 | **REST Service**
 | `rest.port` | Internal REST services endpoint port. | 9998 |
 | `rest.max_threads` | Internal REST services endpoint max active requests. | 100 |
