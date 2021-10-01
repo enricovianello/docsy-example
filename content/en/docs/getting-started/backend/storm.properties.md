@@ -16,8 +16,8 @@ The full set of currently supported configuration properties are shown below by 
 
 ### SRM service properties
 
-| Name | Description |
-|:-----|:------------|
+| Property | Description |
+|:---------|:------------|
 | `srm_endpoints`| List of the accepted StoRM SRM endpoints. Each endpoint is composed by `host` (mandatory) and `port` (optional). This list is used by StoRM to understand if a SURL should be managed or not. The first endpoint of this list is considered the default public SRM endpoint. Example: </br> `srm_endpoints[0].host: fe01-storm.example.org` </br> `srm_endpoints[0].port: 8444` </br> `srm_endpoints[1].host: fe02-storm.example.org` </br> `srm_endpoints[1].port: 8444` </br> It replaces the use of `storm.service.FE-public.hostname`, `storm.service.port`, `storm.service.SURL.endpoint` and `storm.service.SURL.default-ports`. It's initialized with one endpoint with the local FQDN as host and 8444 as port. |
 
 Deprecated properties:
@@ -27,12 +27,12 @@ Deprecated properties:
 ### Database connection properties
 
 | Property | Description |
-|:-----|:------------|
-| `db.username` | The connection user name to be passed to the JDBC driver to establish a connection. Default value: **storm** |
-| `db.password` | The connection password to be passed to the JDBC driver to establish a connection. Default value: **storm** |
-| `db.hostname` | Fully Qualified Domain Name of database hostname. It's initialized with the local FQDN |
+|:---------|:------------|
+| `db.username` | The connection user name to be passed to the JDBC driver to establish a connection. Default value: **storm**. It replaces `storm.service.request-db.username`. |
+| `db.password` | The connection password to be passed to the JDBC driver to establish a connection. Default value: **storm**. It replaces `storm.service.request-db.passwd`. |
+| `db.hostname` | Fully Qualified Domain Name of database hostname. It's initialized with the local FQDN. It replaces `storm.service.request-db.host`. |
 | `db.port` | Database connection URL port. Default value: **3306** |
-| `db.properties` | The connection properties that will be sent to the JDBC driver when establishing new connections. Format of the string must be \[propertyName=property;\]\* NOTE - The "user" and "password" properties will be passed explicitly, so they do not need to be included here. Default value: **"serverTimezone=UTC&autoReconnect=true"** |
+| `db.properties` | The connection properties that will be sent to the JDBC driver when establishing new connections. Format of the string must be \[propertyName=property;\]\* NOTE - The "user" and "password" properties will be passed explicitly, so they do not need to be included here. Default value: **"serverTimezone=UTC&autoReconnect=true"**. It replaces `storm.service.request-db.properties`. |
 
 Deprecated properties:
 
@@ -41,7 +41,7 @@ Deprecated properties:
 ### Database connection pool properties
 
 | Property | Description |
-|:-----|:------------|
+|:---------|:------------|
 | `db.pool.size` | The maximum number of active connections that can be allocated from database connection pool at the same time, or negative for no limit. Default value: **-1** |
 | `db.pool.min_idle` | The minimum number of connections that can remain idle in the pool, without extra ones being created, or zero to create none. Default value: **10** |
 | `db.pool.max_wait_millis` | The maximum number of milliseconds that the pool will wait (when there are no available connections) for a connection to be returned before throwing an exception, or -1 to wait indefinitely. Default value: **5000** |
@@ -52,30 +52,80 @@ Deprecated properties:
 
 `asynch.db.ReconnectPeriod`, `asynch.db.DelayPeriod`, `persistence.internal-db.connection-pool.maxActive`,  `persistence.internal-db.connection-pool.maxWait` 
 
-### REST 
+### REST server properties
+
+| Property | Description |
+|:---------|:------------|
+| `rest.port` | Internal REST services endpoint port. Default value: **9998**. It replaces `storm.rest.services.port`. |
+| `rest.max_threads` | Internal REST services endpoint max active requests. Default value: **100**. It replaces `storm.rest.services.maxthreads`. |
+| `rest.max_queue_size` | Internal REST services endpoint max queue size of accepted requests. Default value: **1000**. It replaces `storm.rest.services.max_queue_size`. |
+
+Deprecated properties:
+
+`storm.rest.services.port`, `storm.rest.services.maxthreads` and `storm.rest.services.max_queue_size`
+
+### XMLRPC server properties
+
+StoRM Frontend performs a direct communication to the Backend using a RPC approach, based on the XML-RPC protocol. XML-RPC is a simple protocol to exchange XML structured data over HTTP. The Backend provides an XML-RPC server and one or more Frontends acts as client. 
+
+| Property | Description |
+|:---------|:------------|
+| `xmlrpc.port` | Port to listen on for incoming XML-RPC connections from Frontends(s). Default value: **8080**. It replaces `synchcall.xmlrpc.unsecureServerPort`. |
+| `xmlrpc.max_threads` | Number of threads managing XML-RPC connection from Frontends(s). A well sized value for this parameter have to be at least equal to the sum of the number of working threads in all FrontEend(s). Default value: **256**. It replaces `synchcall.xmlrpc.maxthread`. |
+| `xmlrpc.max_queue_size` | Max number of accepted and queued XML-RPC connection from Frontends(s). Default value: **1000**. It replaces `synchcall.xmlrpc.max_queue_size`. |
+
+Deprecated properties:
+
+`synchcall.xmlrpc.unsecureServerPort`, `synchcall.xmlrpc.maxthread` and `synchcall.xmlrpc.max_queue_size`.
+
+### REST/XMLRPC security properties
+
+| Property | Description |
+|:---------|:------------|
+| `security.enabled` | Whether the backend will require a token to be present for accepting XML-RPC requests. Default value: **true**. It replaces `synchcall.xmlrpc.security.enabled`. |
+| `security.token` | The token that the backend will require to be present for accepting XML-RPC requests. Default value: **secret**. It replaces `synchcall.xmlrpc.security.token`. |
+
+Deprecated properties:
+
+`synchcall.xmlrpc.security.enabled` and `synchcall.xmlrpc.security.token`.
+
+### Disk Usage service properties
+
+Disk Usage service is used for the periodic update of the used-space of all the storage spaces that are not GPFS-with-quota-enabled. Running a periodic 'du -s -b' on the top of the storage spaces root directory, the used-space stored into the database is updated. By default, the service is disabled.
+
+| Property | Description |
+|:---------|:------------|
+| `du.enabled` | Enable disk usage service. Default value: **false**. It replaces `storm.service.du.enabled`.|
+| `du.initial_delay` | The initial delay before the service is started (seconds). Default value: **60**. It replaces `storm.service.du.delay`. |
+| `du.tasks_interval` | The interval in seconds between successive run. Default value: **86400**. It replaces `storm.service.du.interval`. |
+| `du.parallel_tasks_enabled` | Enable parallel execution of the expected du. Default value: **false**. |
+
+Deprecated variables:
+
+`storm.service.du.enabled`, `storm.service.du.delay` and `storm.service.du.interval`.
+
+### Advanced files and directories settings
+
+| Property | Description |
+|:---------|:------------|
+| `directories.automatic_creation` | Enable/disable the automatic directory creation during srmPrepareToPut requests. Default value: **false**. It replaces `directory.automatic-creation`. |
+| `directories.writeperm` | Enable/disable write permission on directory created through srmMkDir requests. Default value: **false** |
+| `files.default_filesize` | Default FileSize. Default value: **1000000**. It replaces `fileSize.default`. |
+| `files.default_lifetime` | Default FileLifetime in seconds used for VOLATILE file in case of SRM request. Default value: **259200**. It replaces `fileLifetime.default`. |
+| `files.default_overwrite` | Default file overwrite mode to use upon srmPrepareToPut requests. Possible values are N (Never), A (Always), D (when files Differs). Default value: **A**. It replaces `default.overwrite`. |
+| `files.default_storagetype` | Default File Storage Type to be used for srmPrepareToPut requests. Possible values are  V (Volatile), P (Permanent) and  D (Durable). Default value: **P**. It replaces `default.storagetype`. |   
+
+Deprecated variables:
+
+`directory.automatic-creation`, `default.overwrite`, `default.storagetype`, `fileLifetime.default`, `fileSize.default`
+
+### Advanced configuration
 
 | Property | Description |
 |:-----|:------------|
-| **REST Service**
-| `rest.port` | Internal REST services endpoint port. | 9998 |
-| `rest.max_threads` | Internal REST services endpoint max active requests. | 100 |
-| `rest.max_queue_size` | Internal REST services endpoint max queue size of accepted requests. | 1000 |
 | **Sanity Checks**
 | `sanity_checks_enabled` | Enable/disable sanity checks during bootstrap phase. | true |
-| **XMLRPC Server**
-| `xmlrpc.port` | Port to listen on for incoming XML-RPC connections from Frontends(s). | 8080 |
-| `xmlrpc.max_threads` | Number of threads managing XML-RPC connection from Frontends(s). A well sized value for this parameter have to be at least equal to the sum of the number of working threads in all FrontEend(s). | 256 |
-| `xmlrpc.max_queue_size` | Max number of accepted and queued XML-RPC connection from Frontends(s). | 1000 |
-| `security_enabled` | Whether the backend will require a token to be present for accepting XML-RPC requests. | false |
-| `security_token` | The token that the backend will require to be present for accepting XML-RPC requests. | |
-| **Disk Usage Service**
-| `du.enabled` | Disk Usage service is used for the periodic update of the used-space of all the storage spaces that are not GPFS-with-quota-enabled. Running a periodic 'du -s -b' on the top of the storage spaces root directory, the used-space stored into the database is updated. By default, the service is disabled. Disk Usage service is used for the periodic update of the used-space of all the storage spaces that are not GPFS-with-quota-enabled. Running a periodic 'du -s -b' on the top of the storage spaces root directory, the used-space stored into the database is updated. By default, the service is disabled. | false
-| `du.enable_parallel_tasks` | Enable parallel execution of the expected du. | false |
-| `du.initial_delay` | The initial delay before the service is started (seconds). | 60 |
-| `du.tasks_interval` | The interval in seconds between successive run. | 86400 |
 | **Advanced Configuration**
-| `directories.automatic_creation` | Enable/disable the automatic directory creation during srmPrepareToPut requests. | false |
-| `directories.writeperm` | Enable/disable write permission on directory created through srmMkDir requests. | false |
 | `pinlifetime.default` | Default pinLifetime in seconds used for pinning files in case of srmPrepareToPut or srmPrapareToGet requests | 259200 |
 | `pinlifetime.maximum` | Maximum allowed value for pinLifeTime. Values beyond the max will be dropped to max value. | 1814400 |
 | `extraslashes.file` | Add extra slashes after the “authority” part of a TURL for FILE protocol. | '' |
