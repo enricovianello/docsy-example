@@ -38,8 +38,13 @@ UID:LOGIN:GID1[,GID2,...]:GROUP1[,GROUP2,...]:VO:FLAG:
 #### Example
 
 We want to create the following pool accounts:
-- a pool account of 100 users with group name *testvo* and *test.vo* as VO name
-- a pool account of 30 production users with group name *testvoprd*, *test.vo* as VO name and *prd* as FLAG.
+- a pool account of 100 users with group name `testvo` and `test.vo` as VO name
+- a pool account of 30 production users with group name `testvoprd`, `test.vo` as VO name and `prd` as FLAG.
+
+> This example is done with YAIM, therefore we need to install it in case:
+> ```
+> yum install -y glite-yaim-core attr
+> ```
 
 In order to do this we have to create the following file:
 
@@ -87,7 +92,3 @@ Then, you can run yaim configuration as follow:
     -n se_config_users
 ```
 
-> Install YAIM with:
-> ```
-> yum install -y glite-yaim-core attr
-> ```

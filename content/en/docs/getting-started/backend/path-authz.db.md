@@ -68,7 +68,7 @@ Each ACE is composed by the following information:
 
 ### Example
 
-To properly configure StoRM's Path Authorization DataBase it's useful to have the right knowledge about the users/groups involved with [LCMAPS mapping]({{< ref "/docs/reference/configuration/backend/lcmaps-mapping.md" >}} "LCMAPS Mapping").
+To properly configure StoRM's Path Authorization DataBase it's useful to have the right knowledge about the users/groups involved with [LCMAPS mapping]({{< ref "/docs/getting-started/backend/lcmaps-mapping.md" >}} "LCMAPS Mapping").
 
 Here we're going to show how to configure a simple path authorization filter on our test VO's storage area: *test.vo*.
 The idea is to create:
@@ -116,7 +116,7 @@ In order to do some test on the path-authz.db configuration showed above, two us
 * **/C=IT/O=IGI/CN=test0**
 * **/C=IT/O=INFN/OU=Personal Certificate/L=CNAF/CN=Enrico Vianello** with "Role=R1"
 
-Supposing the same LCMAPS configuration of [this]({{< ref "/docs/reference/configuration/backend/lcmaps-mapping.md#example" >}} "LCMAPS Mapping Example") example, user *Enrico Vianello* will be mapped into *testvoprd* local group (it has "Role=R1" between its FQANs). User *test0* has no "Role=R1" then it will be mapped to *testvo* local group.
+Supposing the same LCMAPS configuration of [this]({{< ref "/docs/getting-started/backend/lcmaps-mapping.md#example" >}} "LCMAPS Mapping Example") example, user *Enrico Vianello* will be mapped into *testvoprd* local group (it has "Role=R1" between its FQANs). User *test0* has no "Role=R1" then it will be mapped to *testvo* local group.
 
 #### SRM tests
 

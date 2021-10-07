@@ -12,6 +12,8 @@ LCMAPS is the Local Credential Mapping Service and it takes care of translating 
 
 > *See more on https://wiki.nikhef.nl/grid/LCMAPS*
 
+
+
 This mapping can be configured via YAIM through the variables `USERS_CONF` and `GROUPS_CONF`. These variables contain the full absolute path of a couple of files: *users.conf* and *groups.conf*.
 
 The file *users.conf* contains the list of Linux users (pool accounts) to be created. It's a plain list of the users and their IDs. An example of this configuration file can be found into:
@@ -67,18 +69,6 @@ Note that:
 - the order of the lines in *groups.conf* is important: for any FQAN only the first match is taken
 
 The FLAG selects a set of special accounts to be used for the mapping, namely those accounts in users.conf that have the same flag. By default, when the flag is empty, the ordinary pool accounts will be used.
-
-
-## ACLs: AheadOfTime or JustInTime
-
-Setting ACL on directory and files is foundamental to give to the mapped user and group the necessary permissions to read and write on a storage area (or a part of it).
-
-**AheadOfTime** and **JustInTime** are the two ACL enforcing approach of StoRM.
-
-In case of *AheadOfTime* (**AoT**) approach, StoRM sets up a physical ACL on file and directories for the local group (gid) in which the user is mapped (the mapping is done querying the LCMAPS service con the BE machine passing both user DN and FQANs). *The group ACL remains for the whole lifetime of the file*. 
-
-In case of *JustInTime* (**JiT**) approach, StoRM sets up and ACL for the local user (uid) the user is mapped. *The ACL remains in place only for the lifetime of the SRM request, then StoRM removes it* (this is done to avoid granting access to pool account uid in case of reallocation on different users).
-
 
 
 ## Example
@@ -144,6 +134,7 @@ You need a YAIM profile `/opt/glite/yaim/node-info.d/se_config_users` defined as
 ```
 se_config_users_FUNCTIONS="
 config_users
+
 "
 ```
 
@@ -151,3 +142,6 @@ config_users
 > ```
 > yum install -y glite-yaim-core attr
 > ```
+
+
+INSTALL_ROOT USERS_CONF GROUPS_CONF VOS VO__VOMS_SERVERS GRIDMAPFILE CONFIG_GRIDMAPDIR
