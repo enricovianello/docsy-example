@@ -1,24 +1,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>StoRM – StoRM</title><link>https://enricovianello.github.io/storm-docs/</link><description>Recent content on StoRM</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://enricovianello.github.io/storm-docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Released StoRM v1.11.21</title><link>https://enricovianello.github.io/storm-docs/blog/2021/05/12/released-storm-v1.11.21/</link><pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate><guid>https://enricovianello.github.io/storm-docs/blog/2021/05/12/released-storm-v1.11.21/</guid><description>
 &lt;p>The StoRM Product Team is pleased to announce the release of
-&lt;a href="%7B%7Bsite.baseurl%7D%7D/release-notes/StoRM-v1.11.21.html">StoRM 1.11.21&lt;/a> that includes the following updated components:&lt;/p>
+&lt;a href="https://italiangrid.github.io/storm/release-notes/StoRM-v1.11.21.html">StoRM 1.11.21&lt;/a> that includes the following updated components:&lt;/p>
 &lt;ul>
-&lt;li>StoRM Backend v. &lt;a href="%7B%7Bsite.baseurl%7D%7D/release-notes/storm-backend-server/1.11.21/">1.11.21&lt;/a>&lt;/li>
-&lt;li>StoRM Frontend v. &lt;a href="%7B%7Bsite.baseurl%7D%7D/release-notes/storm-frontend-server/1.8.15/">1.8.15&lt;/a>&lt;/li>
-&lt;li>StoRM WebDAV v. &lt;a href="%7B%7Bsite.baseurl%7D%7D/release-notes/storm-webdav/1.4.1/">1.4.1&lt;/a>&lt;/li>
+&lt;li>StoRM Backend v. &lt;a href="https://github.com/italiangrid/storm/releases/tag/v1.11.21">1.11.21&lt;/a>&lt;/li>
+&lt;li>StoRM Frontend v. &lt;a href="https://github.com/italiangrid/storm-frontend/releases/tag/v1.8.15">1.8.15&lt;/a>&lt;/li>
+&lt;li>StoRM WebDAV v. &lt;a href="https://github.com/italiangrid/storm-webdav/releases/tag/v1.4.1">1.4.1&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>and introduces:&lt;/p>
 &lt;ul>
-&lt;li>StoRM Utils v. &lt;a href="%7B%7Bsite.baseurl%7D%7D/release-notes/storm-utils/1.0.0/">1.0.0&lt;/a>&lt;/li>
+&lt;li>StoRM Utils v. &lt;a href="https://github.com/italiangrid/storm-utils/releases/tag/v1.0.0">1.0.0&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>This release:&lt;/p>
 &lt;ul>
-&lt;li>fixes the &lt;a href="%7B%7Bsite.baseurl%7D%7D/2021/04/30/storm-v1.11.20-known-issue.html">known issue&lt;/a> about the upgrade to StoRM v1.11.20 which could break connections with MariaDB&lt;/li>
+&lt;li>fixes the &lt;a href="https://enricovianello.github.io/storm-docs/storm-docs/blog/2021/04/30/storm-v1.11.20-could-break-connections-with-mariadb/">known issue&lt;/a> about the upgrade to StoRM v1.11.20 which could break connections with MariaDB&lt;/li>
 &lt;li>fixes the boot order for both Frontend and Backend ensuring that mariadb service is started before StoRM services;&lt;/li>
 &lt;li>fixes the failed state shown on stop/restart of Java components;&lt;/li>
 &lt;li>provides a set of scripts that can be used to edit from command line the storage space info related to a storage area.&lt;/li>
 &lt;/ul>
-&lt;p>Please, follow the &lt;a href="%7B%7Bsite.baseurl%7D%7D/documentation/sysadmin-guide/1.11.21/upgrading/">upgrade instructions&lt;/a>.
-Read the &lt;a href="%7B%7Bsite.baseurl%7D%7D/release-notes/StoRM-v1.11.21.html">release notes&lt;/a> for more details.&lt;/p></description></item><item><title>Blog: StoRM v1.11.20 could break connections with MariaDB</title><link>https://enricovianello.github.io/storm-docs/blog/2021/04/30/storm-v1.11.20-could-break-connections-with-mariadb/</link><pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate><guid>https://enricovianello.github.io/storm-docs/blog/2021/04/30/storm-v1.11.20-could-break-connections-with-mariadb/</guid><description>
+&lt;p>Please, follow the &lt;a href="https://italiangrid.github.io/storm/documentation/sysadmin-guide/1.11.21/upgrading/">upgrade instructions&lt;/a>.
+Read the &lt;a href="https://italiangrid.github.io/storm/release-notes/StoRM-v1.11.21.html">release notes&lt;/a> for more details.&lt;/p></description></item><item><title>Blog: StoRM v1.11.20 could break connections with MariaDB</title><link>https://enricovianello.github.io/storm-docs/blog/2021/04/30/storm-v1.11.20-could-break-connections-with-mariadb/</link><pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate><guid>https://enricovianello.github.io/storm-docs/blog/2021/04/30/storm-v1.11.20-could-break-connections-with-mariadb/</guid><description>
 &lt;p>After the update from StoRM v1.11.19 to StoRM v1.11.20, if JVM and database are not on the same timezone, the Backend&amp;rsquo;s communication with MariaDB could start failing with the following error:&lt;/p>
 &lt;pre>&lt;code>Caused by: java.sql.SQLException: The server time zone value 'CEST' is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specifc time zone value if you want to utilize time zone support.
 &lt;/code>&lt;/pre>&lt;p>This bug is tracked at &lt;a href="https://issues.infn.it/jira/browse/STOR-1397">STOR-1397&lt;/a>.&lt;/p>
