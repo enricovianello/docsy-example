@@ -27,15 +27,13 @@ This release:
 Please, follow the [upgrade instructions][upgrade-instructions].
 Read the [release notes][release-notes] for more details.
 
-[backend-rn]: {{site.baseurl}}/release-notes/storm-backend-server/1.11.21/
-[frontend-rn]: {{site.baseurl}}/release-notes/storm-frontend-server/1.8.15/
-[webdav-rn]: {{site.baseurl}}/release-notes/storm-webdav/1.4.1/
-[utils-rn]: {{site.baseurl}}/release-notes/storm-utils/1.0.0/
+[backend-rn]: https://github.com/italiangrid/storm/releases/tag/v1.11.21
+[frontend-rn]: https://github.com/italiangrid/storm-frontend/releases/tag/v1.8.15
+[webdav-rn]: https://github.com/italiangrid/storm-webdav/releases/tag/v1.4.1
+[utils-rn]: https://github.com/italiangrid/storm-utils/releases/tag/v1.0.0
 
-[release-notes]: {{site.baseurl}}/release-notes/StoRM-v1.11.21.html
-[download-page]: {{site.baseurl}}/download.html
-[storm-sysadmin-guide]: {{site.baseurl}}/documentation/sysadmin-guide/1.11.21
+[release-notes]: https://italiangrid.github.io/storm/release-notes/StoRM-v1.11.21.html
 
-[upgrade-instructions]: {{site.baseurl}}/documentation/sysadmin-guide/1.11.21/upgrading/
+[upgrade-instructions]: https://italiangrid.github.io/storm/documentation/sysadmin-guide/1.11.21/upgrading/
 
-[known-issue-post]: {{site.baseurl}}/2021/04/30/storm-v1.11.20-known-issue.html
+[known-issue-post]: {{< relref "../news/storm-v1.11.20-known-issue.md" >}}
