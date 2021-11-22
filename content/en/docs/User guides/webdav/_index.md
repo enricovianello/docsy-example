@@ -8,7 +8,8 @@ description: >
 
 ## The WebDAV protocol
 
-<img src="/storm-docs/images/webdav-logo.jpg" alt="webdav-logo" width="100" style="float: left; margin-right: 30px; margin-left: 0px; margin-top: 10px;"/>
+<img src="webdav-logo.jpg" alt="webdav-logo" width="100" style="float: left; margin-right: 30px; margin-left: 0px; margin-top: 10px;"/>
+
 
 Web Distributed Authoring and Versioning (WebDAV) protocol consists of a set of methods, headers, and content-types ancillary to HTTP/1.1 for the management of resource properties, creation and management of resource collections, URL namespace manipulation, and resource locking. The purpose of this protocol is to present a Web content as a writable medium in addition to be a readable one. [WebDAV on Wikipedia](http://en.wikipedia.org/wiki/WebDAV) and the [WebDAV website](http://www.webdav.org/) provide information on this protocol.
 
@@ -71,7 +72,7 @@ See more details [here][vomapfiles]. Read permissions of the content of a storag
 
 Both the old ```storm-gridhttps-server``` and the new ```storm-webdav``` components implements WebDAV protocol by using [*Milton*](http://milton.io/) open source java library.
 
-![milton](/storm-docs/images/milton.png)
+![milton](milton.png)
 
 ## Examples
 
