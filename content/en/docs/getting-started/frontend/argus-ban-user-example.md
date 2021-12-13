@@ -1,13 +1,13 @@
 ---
 title: Argus blacklisting
 version: 1.11.4
+weight: 1
+noComment: true
+description: >
+  Example of how to avoid a specific user to access a storage-area through Argus authorization system.
 ---
 
-### Example of how to avoid a specific user to access a storage-area using Argus authorization system.
-
-_**Components installed**_: <span class="label label-important">StoRM Backend</span> <span class="label label-info">StoRM Frontend</span> <span class="label">StoRM GridFTP</span> <span class="label label-warning">Argus</span>
-
-#### Prerequisites:
+#### Prerequisites
 
 You need:
 
