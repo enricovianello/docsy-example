@@ -147,7 +147,7 @@ Output:
                     "data.management.transfer", 
                     "data.management.storage"
                 ], 
-                "endpointurl": "httpg://omii006-vm03.cnaf.infn.it:8444/srm/managerv2", 
+                "endpointurl": "httpg://omii005-vm03.cnaf.infn.it:8444/srm/managerv2", 
                 "interfacetype": "srm", 
                 "interfaceversion": "2.2", 
                 "name": "SRM_0", 
@@ -161,7 +161,7 @@ Output:
                     "data.management.transfer", 
                     "data.management.storage"
                 ], 
-                "endpointurl": "http://omii006-vm03.cnaf.infn.it:8085", 
+                "endpointurl": "http://omii005-vm03.cnaf.infn.it:8085", 
                 "interfacetype": "DAV", 
                 "interfaceversion": "1.1", 
                 "name": "HTTP_0", 
@@ -175,7 +175,7 @@ Output:
                     "data.management.transfer", 
                     "data.management.storage"
                 ], 
-                "endpointurl": "https://omii006-vm03.cnaf.infn.it:8443", 
+                "endpointurl": "https://omii005-vm03.cnaf.infn.it:8443", 
                 "interfacetype": "DAV", 
                 "interfaceversion": "1.1", 
                 "name": "HTTPS_0", 
