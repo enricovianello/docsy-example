@@ -46,11 +46,15 @@ This file can be produced either manually or using StoRM Utils scripts.
 * set the value of *usedsize* property as in the example;
 * set the value of *checktime* property as in the example. To obtain an RFC-2822 timestamp of the current time you can execute the command `date --rfc-2822`.
 
-[storm-utils]: {{< relref "storm-utils-usage.md#storm-get-space-aliases" >}}
-
 #### Puppet configuration
 
-TBD
+Ensure that the file exists at the service startup using a puppet define in the `manifest` directory of the module:
+
+```bat
+	file { '/etc/storm/backend-server/used-space.ini':
+    	ensure => present,
+	}
+```
 
 ### Configuration using StoRM Utils
 
