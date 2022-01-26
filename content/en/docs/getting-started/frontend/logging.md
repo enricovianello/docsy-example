@@ -4,10 +4,10 @@ linkTitle: "Logging"
 weight: 0
 noComment: true
 description: >
-  This section describes how handle the log file of the StoRM FE service.
+  This section describes how to handle the log file of the StoRM FE service.
 ---
 
-The Frontend logs information on the service status and the SRM requests received and managed by the process. The Frontend's log supports different level of logging (ERROR, WARNING, INFO, DEBUG, DEBUG2) that can be set via the `log.debuglevel` property in _storm-frontend-server.conf_ configuration file; its default value is INFO.
+The Frontend logs information on the service status and the SRM requests received and managed by the process. The Frontend's log supports different level of logging (ERROR, WARNING, INFO, DEBUG, DEBUG2) that can be set via the `log.debuglevel` property in the _storm-frontend-server.conf_ configuration file (placed in the _/etc/storm/frontend-server_ directory). The default logging level is set to INFO.
 The Frontend log file named _storm-frontend-server.log_ is placed in the _/var/log/storm_ directory. At start-up time, the FE prints here the whole set of configuration parameters, this can be useful to check the desired values. When a new SRM request is managed, the FE logs information about the user (DN and FQANs) and the requested parameters.
 At each SRM request, the FE logs also this important information:
 
@@ -76,13 +76,18 @@ This is called the **Detailed Monitoring Round**. After this, the Monitoring Sum
 
 ### gSOAP tracefile
 
-If you have problem at gSOAP level, and you have already looked at the troubleshooting section of the StoRM site without finding a solution, and you are brave enough, you could try to find some useful information on the gSOAP log file.
-To enable gSOAP logging, set the following environment variables:
+If you have problem at gSOAP level, and you have already looked at the troubleshooting section of the StoRM site without finding a solution, and you are brave enough, you could try to find some useful information on the gSOAP log file.  
+To enable gSOAP logging, add a drop-in file of the `storm-frontend-server` unit:
 
-```bash
-$ export CGSI_TRACE=1
-$ export CGSI_TRACEFILE=/tmp/tracefile
-```
+- create a _*.config_ file (for example _gsoap.conf_) in the _/etc/systemd/system/storm-frontend-server.service.d_ directory;
+- add the following content
+  ```bat
+  [Service]
+  Environment="CGSI_TRACE=1"
+  Environment="CGSI_TRACEFILE=/tmp/tracefile"
+  ```
+  where _/tmp/tracefile_ can be customized with any path to your log file;
+- reload all the unit files with `systemctl daemon-reload`;
+- restart the server with `systemctl restart storm-frontend-server`.
 
-and restart the Frontend daemon by calling directly the init script */etc/init.d/storm-frontend-server* and see if the error messages contained in */tmp/tracefile* could help. Please be very careful, it prints really a huge amount of information.
-
+Please be very careful, it prints really a huge amount of information.
