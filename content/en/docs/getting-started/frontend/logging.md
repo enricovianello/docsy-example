@@ -79,7 +79,7 @@ This is called the **Detailed Monitoring Round**. After this, the Monitoring Sum
 If you have problem at gSOAP level, and you have already looked at the troubleshooting section of the StoRM site without finding a solution, and you are brave enough, you could try to find some useful information on the gSOAP log file.  
 To enable gSOAP logging, add a drop-in file of the `storm-frontend-server` unit:
 
-- create a _*.config_ file (for example _gsoap.conf_) in the _/etc/systemd/system/storm-frontend-server.service.d_ directory;
+- create a _*.conf_ file (for example _gsoap.conf_) in the _/etc/systemd/system/storm-frontend-server.service.d_ directory;
 - add the following content
   ```bat
   [Service]
