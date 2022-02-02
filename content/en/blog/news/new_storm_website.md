@@ -5,7 +5,7 @@ date: 2022-01-14
 description: "The new StoRM website (powered by the Docsy Hugo theme)"
 ---
 
-The StoRM website and documentation has [moved](https://italiangrid.github.io/storm/),
+The StoRM website and documentation has moved from [here](https://italiangrid.github.io/storm/),
 and if you're reading this you already know.
 
 The new StoRM website is powered by [Docsy][docsy], a [Hugo][hugo] theme for
