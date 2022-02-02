@@ -1,5 +1,5 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>StoRM – StoRM</title><link>https://enricovianello.github.io/storm-docs/</link><description>Recent content on StoRM</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://enricovianello.github.io/storm-docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: New StoRM website!</title><link>https://enricovianello.github.io/storm-docs/blog/2022/01/14/new-storm-website/</link><pubDate>Fri, 14 Jan 2022 00:00:00 +0000</pubDate><guid>https://enricovianello.github.io/storm-docs/blog/2022/01/14/new-storm-website/</guid><description>
-&lt;p>The StoRM website and documentation has &lt;a href="https://italiangrid.github.io/storm/">moved&lt;/a>,
+&lt;p>The StoRM website and documentation has moved from &lt;a href="https://italiangrid.github.io/storm/">here&lt;/a>,
 and if you&amp;rsquo;re reading this you already know.&lt;/p>
 &lt;p>The new StoRM website is powered by &lt;a href="https://www.docsy.dev/">Docsy&lt;/a>, a &lt;a href="https://gohugo.io/">Hugo&lt;/a> theme for
 creating technical documentation sites, which is increasingly popular in Open
