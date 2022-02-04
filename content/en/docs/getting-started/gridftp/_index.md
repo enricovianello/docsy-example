@@ -1,10 +1,10 @@
 ---
-title: "StoRM GridFTP"
+title: "StoRM Globus GridFTP DSI plugin"
 linkTitle: "GridFTP"
 weight: 0
 noComment: true
 description: >
-  StoRM GridFTP service configuration. 
+  StoRM Globus GridFTP DSI plugin service configuration
 ---
 
 {{% pageinfo %}}
