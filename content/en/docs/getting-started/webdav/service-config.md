@@ -24,113 +24,6 @@ https://github.com/italiangrid/storm-webdav/blob/master/src/main/resources/appli
 
 that you can consult to see what are the default settings.
 
-### Memory
-
-You should give a reasonable amount of memory to StoRM WebDAV to do its work.
-The amount depends on the number of concurrent requests that the server needs
-to handle.
-
-A good starting point is giving the server 2G of heap memory, by setting the
-following env variable:
-
-```bat
-STORM_WEBDAV_JVM_OPTS=-Xms2048m -Xmx2048m
-```
-
-In general, allowing for `256Mb + (# threads * 6Mb)` should give StoRM WebDAV
-enough memory to do its work.
-
-### Threadpool sizes
-
-The size of the thread pool used to serve incoming requests and
-third-party-copy requests can be set with the following variables:
-
-```yaml
-storm:
-  connector:
-    max-connections: 300
-    max-queue-size: 900
-  tpc:
-    max-connections: 200
-    max-connections-per-route: 150
-    progress-report-thread-pool-size: (# of cores of your machine)
-```
-
-### Conscrypt
-
-Conscrypt improves TLS performance and can be enabled as follows:
-
-```yaml
-storm:
-  tpc:
-    use-conscrypt: true
-  tls:
-    use-conscrypt: true
-    enable-http2: true
-```
-
-### Use `/dev/urandom` for random number generation
-
-Using `/dev/random` can lead to the service being blocked if not enough entropy
-is available in the system.
-
-To avoid this scenario, use `/dev/urandom`, by setting the JVM options as
-follows:
-
-```bat
-STORM_WEBDAV_JVM_OPTS=-Xms2048m -Xmx2048m -Djava.security.egd=file:/dev/./urandom
-```
-
-### VO mapfiles
-
-When VO map files are enabled, users can authenticate to the StoRM webdav
-service using the certificate in their browser and be granted VOMS attributes
-if their subject is listed in one of the supported VO mapfile. You can
-configure whether users listed in VO map files will be granted read-only or
-write permissions in the storage area configuration in the
-`/etc/storm/webdav/sa.d` directory.
-
-This mechanism is very similar to the traditional Gridmap file but is just used
-to know whether a given user is registered as a member in a VOMS managed VO and
-not to map his/her certificate subject to a local unix account.
-
-### How to enable VO map files
-
-VO map files support is disabled by default in StoRM WebDAV.
-
-Set `STORM_WEBDAV_VO_MAP_FILES_ENABLE=true` in 
-
-`/etc/systemd/system/storm-webdav.service.d/storm-webdav.conf` to enable VO map file support.
-
-### VO map files format and location
-
-A VO map file is a csv file listing a certificate subject, issuer and email for each line.
-It can be easily generated for a given VO using the `voms-admin` command line utility.
-VO map files by default live in the `/etc/storm/webdav/vo-mapfiles.d` directory.
-
-For each VO, a file named:
-
-`VONAME.vomap`
-
-is put in the `/etc/storm/webdav/vo-mapfiles.d` directory. 
-
-### VO Map file examples
-
-The file `/etc/storm/webdav/vo-mapfiles.d/test.vomap` with the following content:
-
-```bat
-/C=IT/O=INFN/OU=Personal Certificate/L=CNAF/CN=Andrea Ceccanti,/C=IT/O=INFN/CN=INFN CA,andrea.ceccanti@cnaf.infn.it
-/C=IT/O=INFN/OU=Personal Certificate/L=CNAF/CN=Enrico Vianello,/C=IT/O=INFN/CN=INFN CA,enrico.vianello@cnaf.infn.it
-```
-
-will grant the `test` VO membership to clients authenticated with the above subjects.
-
-To generate a VO mapfile for the `cms` VO, you could run the following command
-
-```bash
-voms-admin --host voms.cern.ch --vo cms list-users > /etc/storm/webdav/vo-mapfiles.d/cms.vomap
-```
-
 ## Storage area configuration
 
 Each storage area is configured by placing a properties file in the `/etc/storm/webdav/sa.d` directory.
@@ -361,31 +254,54 @@ The policies above grant:
 -   all access to the `example` storage area to users in the group
     `/example/admins`, authenticated with VOMS or OpenID Connect
 
-## Puppet configuration
+## VO mapfiles
 
-The [StoRM puppet module][storm-puppet] can be used to configure the service on 
-CENTOS 7.  
+When VO map files are enabled, users can authenticate to the StoRM webdav
+service using the certificate in their browser and be granted VOMS attributes
+if their subject is listed in one of the supported VO mapfile. You can
+configure whether users listed in VO map files will be granted read-only or
+write permissions in the storage area configuration in the
+`/etc/storm/webdav/sa.d` directory.
 
-We recommend to use directly the StoRM WebDAV YAML configuration to tune your
-deployment configuration, instead of using variables defined at the puppet
-level, i.e.:
+This mechanism is very similar to the traditional Gridmap file but is just used
+to know whether a given user is registered as a member in a VOMS managed VO and
+not to map his/her certificate subject to a local unix account.
 
-```puppet
-# Install service and configure enviroment variables
-class { 'storm::webdav':
-  hostnames => ['storm-webdav.test.example'],
-}
-# Configure your application.yml
-storm::webdav::application_file { 'application.yml':
-  source => 'puppet:///the/path/to/the/application.yml',
-}
-# Storage Area configuration (one for each storage area)
-storm::webdav::storage_area_file { 'test.vo.properties':
-  source => 'puppet:///the/path/to/the/test.vo.properties',
-}
-storm::webdav::storage_area_file { 'test.vo.2.properties':
-  source => 'puppet:///the/path/to/the/test.vo.2.properties',
-}
+### How to enable VO map files
+
+VO map files support is disabled by default in StoRM WebDAV.
+
+Set `STORM_WEBDAV_VO_MAP_FILES_ENABLE=true` in 
+
+`/etc/systemd/system/storm-webdav.service.d/storm-webdav.conf` to enable VO map file support.
+
+### VO map files format and location
+
+A VO map file is a csv file listing a certificate subject, issuer and email for each line.
+It can be easily generated for a given VO using the `voms-admin` command line utility.
+VO map files by default live in the `/etc/storm/webdav/vo-mapfiles.d` directory.
+
+For each VO, a file named:
+
+`VONAME.vomap`
+
+is put in the `/etc/storm/webdav/vo-mapfiles.d` directory. 
+
+### VO Map file examples
+
+The file `/etc/storm/webdav/vo-mapfiles.d/test.vomap` with the following content:
+
+```bat
+/C=IT/O=INFN/OU=Personal Certificate/L=CNAF/CN=Andrea Ceccanti,/C=IT/O=INFN/CN=INFN CA,andrea.ceccanti@cnaf.infn.it
+/C=IT/O=INFN/OU=Personal Certificate/L=CNAF/CN=Enrico Vianello,/C=IT/O=INFN/CN=INFN CA,enrico.vianello@cnaf.infn.it
+```
+
+will grant the `test` VO membership to clients authenticated with the above subjects.
+
+To generate a VO mapfile for the `cms` VO, you could run the following command
+
+```bash
+voms-admin --host voms.cern.ch --vo cms list-users > /etc/storm/webdav/vo-mapfiles.d/cms.vomap
 ```
 
 ## Custom application.yml configuration
@@ -605,7 +521,34 @@ policies:
           sub: a1b98335-9649-4fb0-961d-5a49ce108d49
 ```
 
-[spring-oidc-support]: https://docs.spring.io/spring-boot/docs/2.1.12.RELEASE/reference/html/boot-features-security.html#boot-features-security-oauth2-client
+## Threadpool sizes
+
+The size of the thread pool used to serve incoming requests and
+third-party-copy requests can be set with the following variables:
+
+```yaml
+storm:
+  connector:
+    max-connections: 300
+    max-queue-size: 900
+  tpc:
+    max-connections: 200
+    max-connections-per-route: 150
+    progress-report-thread-pool-size: (# of cores of your machine)
+```
+
+## Conscrypt
+
+Conscrypt improves TLS performance and can be enabled as follows:
+
+```yaml
+storm:
+  tpc:
+    use-conscrypt: true
+  tls:
+    use-conscrypt: true
+    enable-http2: true
+```
 
 ## Configuring support for third-party transfers
 
@@ -679,5 +622,62 @@ spring:
 
 For other redis connection configuration options, see the [Spring boot reference guide][spring-boot-reference].
 
+## Memory
+
+You should give a reasonable amount of memory to StoRM WebDAV to do its work.
+The amount depends on the number of concurrent requests that the server needs
+to handle.
+
+A good starting point is giving the server 2G of heap memory, by setting the
+following env variable:
+
+```bat
+STORM_WEBDAV_JVM_OPTS=-Xms2048m -Xmx2048m
+```
+
+In general, allowing for `256Mb + (# threads * 6Mb)` should give StoRM WebDAV
+enough memory to do its work.
+
+## Use `/dev/urandom` for random number generation
+
+Using `/dev/random` can lead to the service being blocked if not enough entropy
+is available in the system.
+
+To avoid this scenario, use `/dev/urandom`, by setting the JVM options as
+follows:
+
+```bat
+STORM_WEBDAV_JVM_OPTS=-Xms2048m -Xmx2048m -Djava.security.egd=file:/dev/./urandom
+```
+
+## Puppet configuration
+
+The [StoRM puppet module][storm-puppet] can be used to configure the service on 
+CENTOS 7.  
+
+We recommend to use directly the StoRM WebDAV YAML configuration to tune your
+deployment configuration, instead of using variables defined at the puppet
+level, i.e.:
+
+```puppet
+# Install service and configure enviroment variables
+class { 'storm::webdav':
+  hostnames => ['storm-webdav.test.example'],
+}
+# Configure your application.yml
+storm::webdav::application_file { 'application.yml':
+  source => 'puppet:///the/path/to/the/application.yml',
+}
+# Storage Area configuration (one for each storage area)
+storm::webdav::storage_area_file { 'test.vo.properties':
+  source => 'puppet:///the/path/to/the/test.vo.properties',
+}
+storm::webdav::storage_area_file { 'test.vo.2.properties':
+  source => 'puppet:///the/path/to/the/test.vo.2.properties',
+}
+```
+
+[spring-oidc-support]: https://docs.spring.io/spring-boot/docs/2.1.12.RELEASE/reference/html/boot-features-security.html#boot-features-security-oauth2-client
 [redis]: https://redis.io/
 [spring-boot-reference]: https://docs.spring.io/spring-boot/docs/2.2.9.RELEASE/reference/htmlsingle/#data-properties
+[storm-puppet]: https://github.com/italiangrid/storm-puppet-module
