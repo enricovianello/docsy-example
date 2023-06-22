@@ -4,9 +4,6 @@ linkTitle: "WebDAV"
 weight: 0
 noComment: true
 description: >
-  StoRM WebDAV service configuration. 
+  StoRM WebDAV service configuration and operation. 
 ---
 
-{{% pageinfo %}}
-This is a placeholder page. Replace it with your own content.
-{{% /pageinfo %}}

@@ -3,9 +3,6 @@ title: "StoRM WebDAV"
 linkTitle: "WebDAV"
 noComment: true
 description: >
-  StoRM WebDAV is ...
+  The StoRM WebDAV service provides a storage management and data access solution supporting VOMS and OAuth/OpenID Connect authentication and authorization mechanisms.
 ---
 
-{{% pageinfo %}}
-This is a placeholder page. Replace it with your own content.
-{{% /pageinfo %}}
